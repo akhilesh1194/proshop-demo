@@ -15,7 +15,7 @@ const CartScreen = () => {
     const { cartItems } = cart;
 
     const addToCartHandler = async (product, qty) => {
-        dispatch(addToCart({ ... product, qty }))
+        dispatch(addToCart({ ...product, qty }))
     }
 
     const removeFromCartHandler = (id) => {

@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import CheckoutSteps from '../components/CheckoutSteps';
-import { Col, ListGroup, Placeholder, Row } from 'react-bootstrap';
+import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { useCreateOrderMutation } from '../slices/ordersApiSlice';
 import { clearCart } from '../slices/cartSlice';
 import { toast } from 'react-toastify';
+import Message from '../components/Message';
 
 
 /*
@@ -88,12 +89,12 @@ const PlaceOrderScreen = () => {
                                                     />
                                                 </Col>
                                                 <Col>
-                                                    <Link to={`/products/${item.product}`}>
+                                                    <Link to={`/product/${item._id}`}>
                                                         {item.name}
                                                     </Link>
                                                 </Col>
                                                 <Col md={4}>
-                                                    { item.qty } * Rs{ item.price } = Rs { item.qty * item.price }
+                                                    { item.qty } x Rs { item.price } = Rs { item.qty * item.price }
                                                 </Col>
                                             </Row>
                                         </ListGroup.Item>
@@ -114,28 +115,28 @@ const PlaceOrderScreen = () => {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Items:</Col>
-                                    <Col>Rs{ cart.itemsPrice }</Col>
+                                    <Col>Rs { cart.itemsPrice }</Col>
                                 </Row>
                             </ListGroup.Item>
 
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Shipping:</Col>
-                                    <Col>Rs{ cart.shippingPrice }</Col>
+                                    <Col>Rs { cart.shippingPrice }</Col>
                                 </Row>
                             </ListGroup.Item>
 
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Tax:</Col>
-                                    <Col>Rs{ cart.taxPrice }</Col>
+                                    <Col>Rs { cart.taxPrice }</Col>
                                 </Row>
                             </ListGroup.Item>
 
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Total:</Col>
-                                    <Col>Rs{ cart.totalPrice }</Col>
+                                    <Col>Rs { cart.totalPrice }</Col>
                                 </Row>
                             </ListGroup.Item>
 
